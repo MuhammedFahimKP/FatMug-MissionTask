@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Video Clone UI (Custom Video)</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        background-color: #000;
+      }
+
+      .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .video-controls {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .fullscreen-btn {
+        background-color: #ff0000;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .fullscreen-btn:hover {
+        background-color: #cc0000;
+      }
+
+      .video-title {
+        font-weight: bold;
+        font-size: 1.25rem;
+      }
+
+      .video-meta {
+        color: #6c757d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container my-5">
+      <!-- Video Section -->
+      <div class="row">
+        <div class="col-md-8">
+          <div class="video-container">
+            <!-- HTML5 Video Tag -->
+            <video id="customVideo" controls>
+              <!-- Replace the video source with your local or hosted video file -->
+              <source src="{{video.track.url}}" type="video/mp4" />
+
+              <!-- <track
+                label="English"
+                kind="subtitles"
+                srclang="en"
+                src="captions/vtt/sintel-en.vtt"
+                default
+              />
+              <track
+                label="Deutsch"
+                kind="subtitles"
+                srclang="de"
+                src="captions/vtt/sintel-de.vtt"
+              />
+              <track
+                label="Español"
+                kind="subtitles"
+                srclang="es"
+                src="captions/vtt/sintel-es.vtt"
+              /> -->
+
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <!-- Video Controls (Title, Meta Info, Fullscreen Button) -->
+          <div class="video-controls">
+            <div>
+              <div class="video-title">Sample Custom Video</div>
+              <div class="video-meta">1M views • Uploaded 2 weeks ago</div>
+            </div>
+            <button class="fullscreen-btn" id="fullscreenBtn">
+              Fullscreen
+            </button>
+          </div>
+        </div>
+
+        <!-- Suggested Videos Section -->
+        <div class="col-md-4">
+          <h5>Up next</h5>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div class="d-flex align-items-start">
+                <img
+                  src="https://via.placeholder.com/100x60"
+                  alt="Suggested Video Thumbnail"
+                  class="me-3"
+                />
+                <div>
+                  <h6 class="mb-1">Suggested Video 1</h6>
+                  <small>500K views • 1 week ago</small>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="d-flex align-items-start">
+                <img
+                  src="https://via.placeholder.com/100x60"
+                  alt="Suggested Video Thumbnail"
+                  class="me-3"
+                />
+                <div>
+                  <h6 class="mb-1">Suggested Video 2</h6>
+                  <small>300K views • 2 weeks ago</small>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="d-flex align-items-start">
+                <img
+                  src="https://via.placeholder.com/100x60"
+                  alt="Suggested Video Thumbnail"
+                  class="me-3"
+                />
+                <div>
+                  <h6 class="mb-1">Suggested Video 3</h6>
+                  <small>200K views • 3 days ago</small>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 JS and Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Fullscreen JavaScript -->
+    <script>
+      const fullscreenBtn = document.getElementById("fullscreenBtn");
+      const customVideo = document.getElementById("customVideo");
+
+      const fullscreen = () => {
+        if (!document.fullscreenElement) {
+          if (customVideo.requestFullscreen) {
+            customVideo.requestFullscreen();
+          } else if (customVideo.mozRequestFullScreen) {
+            // Firefox
+            customVideo.mozRequestFullScreen();
+          } else if (customVideo.webkitRequestFullscreen) {
+            // Chrome, Safari, and Opera
+            customVideo.webkitRequestFullscreen();
+          } else if (customVideo.msRequestFullscreen) {
+            // IE/Edge
+            customVideo.msRequestFullscreen();
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      };
+
+      document.addEventListener("keypress", (event) => {
+        if (["F", "f"].includes(event.key)) {
+          fullscreen();
+        }
+      });
+
+      fullscreenBtn.addEventListener("click", () => {
+        fullscreen();
+      });
+    </script>
+  </body>
+</html>

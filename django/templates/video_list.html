@@ -1,0 +1,35 @@
+{% extends 'videos_base.html' %} {% block content %}
+<h2>Uploaded Videos</h2>
+{% if videos %}
+<div class="row">
+  {% for video in videos %}
+  <div class="col-md-6 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ video.title }}</h5>
+        <video width="100%" controls>
+          <source src="{{ video.track.url }}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {% for subtitle in subtitle_set %}
+
+        <track
+          src="{{ subtitle.track_path }}"
+          kind="subtitle"
+          srclang="{{ subtitle.language }}"
+          label="{{subtitle.language}}"
+        />
+
+        {% endfor %}
+
+        <p class="card-text">
+          <small class="text-muted">Uploaded on {{ video.id }}</small>
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p>No videos have been uploaded yet.</p>
+{% endif %} {% endblock %}

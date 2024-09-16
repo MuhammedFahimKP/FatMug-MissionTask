@@ -1,0 +1,44 @@
+{% extends 'videos_base.html' %} {% block content %}
+<h2>Upload Video</h2>
+<form method="post" enctype="multipart/form-data" novalidate>
+  {% csrf_token %} {{form.as_p}}
+  <div class="mb-3">
+    {{ p.title.label_tag }} {{ p.title }} {% if p.title.errors %}
+    <div class="text-danger">{{ p.title.errors }}</div>
+    {% endif %}
+  </div>
+  <div class="mb-3">
+    {{ p.video_file.label_tag }} {{ p.video_file }}
+    <hr />
+    {% if p.video_file.errors %}
+    <div class="text-danger">{{ p.video_file.errors }}</div>
+    {% endif %}
+  </div>
+  <div class="mb-3">
+    <video id="video-preview" width="320" height="240" controls class="d-none">
+      <source id="video-source" src="" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+{% endblock content %} {% block extra_js %}
+<script>
+  const videoInput = document.getElementById("id_video_file");
+  const videoPreview = document.getElementById("video-preview");
+  const videoSource = document.getElementById("video-source");
+
+  videoInput.addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (file) {
+      const fileURL = URL.createObjectURL(file);
+      videoSource.src = fileURL;
+      videoPreview.classList.remove("d-none");
+      videoPreview.load();
+    } else {
+      videoPreview.classList.add("d-none");
+      videoSource.src = "";
+    }
+  });
+</script>
+{% endblock extra_js %}
