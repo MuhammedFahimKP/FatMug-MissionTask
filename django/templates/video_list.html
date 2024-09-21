@@ -3,31 +3,26 @@
 {% if videos %}
 <div class="row">
   {% for video in videos %}
-  <div class="col-md-6 mb-4">
+  <a
+    href="{% url 'single-view' video.id %}"
+    class="col-md-6 mb-4"
+    style="text-decoration: none"
+  >
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{ video.title }}</h5>
-        <video width="100%" controls>
+
+        <video width="100%">
           <source src="{{ video.track.url }}" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        {% for subtitle in subtitle_set %}
-
-        <track
-          src="{{ subtitle.track_path }}"
-          kind="subtitle"
-          srclang="{{ subtitle.language }}"
-          label="{{subtitle.language}}"
-        />
-
-        {% endfor %}
 
         <p class="card-text">
           <small class="text-muted">Uploaded on {{ video.id }}</small>
         </p>
       </div>
     </div>
-  </div>
+  </a>
   {% endfor %}
 </div>
 {% else %}

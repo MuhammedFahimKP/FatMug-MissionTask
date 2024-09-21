@@ -10,10 +10,20 @@
   <div class="mb-3">
     {{ p.video_file.label_tag }} {{ p.video_file }}
     <hr />
-    {% if p.video_file.errors %}
-    <div class="text-danger">{{ p.video_file.errors }}</div>
+    {% if p.errors %}
+    <div class="text-danger">{{ p.errors }}</div>
     {% endif %}
   </div>
+
+  {% if form.errors %}
+  <div class="alert alert-danger">
+    <ul>
+      {% for field, errors in form.errors.items %} {% for error in errors %}
+      <li>{{ field }}: {{ error }}</li>
+      {% endfor %} {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
   <div class="mb-3">
     <video id="video-preview" width="320" height="240" controls class="d-none">
       <source id="video-source" src="" type="video/mp4" />

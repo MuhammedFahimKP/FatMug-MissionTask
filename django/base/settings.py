@@ -14,7 +14,6 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from urllib.parse import urlparse
 
 import os
 
@@ -62,18 +61,30 @@ DEFUALT_APPS = [
 ]
 
 
+THIRD_PARTY_APPS  =  [
+    #here to add third pary apps
+]
+
+
 
 CUSTOM_APPS = [
-    
+    #here to add project apps 
     'videos'
     
 ]
 
 
 
-INSTALLED_APPS = DEFUALT_APPS + CUSTOM_APPS
 
-MIDDLEWARE = [
+
+INSTALLED_APPS = DEFUALT_APPS + THIRD_PARTY_APPS  + CUSTOM_APPS
+
+
+
+DEFUALT_MIDDLEWARES =  [
+    
+    
+    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -82,6 +93,24 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+THRIRD_PARTY_MIDDLEWARES = [
+    
+    
+    #hear to add third party middleware
+    
+    
+]
+
+CUSTOM_MIDDLEWARES = [
+    #hear to add custom middlewares
+]
+
+
+
+
+MIDDLEWARE = DEFUALT_MIDDLEWARES + THRIRD_PARTY_MIDDLEWARES
 
 ROOT_URLCONF = 'base.urls'
 
@@ -134,19 +163,16 @@ DB_IS_READY = all([DB_NAME,DB_USER,DB_HOST,DB_PORT])
 
 if DB_IS_READY:
     
-    DB_URL = f"postgres://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-    
-    DB_URL = urlparse(DB_URL)
     
     
     DATABASES['default'] = {
         
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':DB_URL.path[1:],                      
-        'USER': DB_URL.username,
-        'PASSWORD': DB_URL.password,
-        'HOST': DB_URL.hostname,
-        'PORT': DB_URL.port,
+        'NAME':DB_NAME,                      
+        'USER': DB_USER,
+        'PASSWORD': DB_PASS,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
     }
 
 

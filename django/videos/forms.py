@@ -1,15 +1,13 @@
-from django import forms
-from .models import Video
 import mimetypes
+from django import forms
+
+# Add .mkv to the mimetypes if not already present
+mimetypes.add_type("video/x-matroska", ".mkv")
 
 class VideoUploadForm(forms.Form):
-    title = forms.CharField(max_length=255, widget=forms.TextInput(attrs={
-        'class': 'form-control',
-        'placeholder': 'Enter video title'
-    }))
     video_file = forms.FileField(widget=forms.ClearableFileInput(attrs={
         'class': 'form-control',
-        'accept': 'video/*'
+        'accept': 'video/mp4,video/x-matroska,video/x-msvideo,video/quicktime'
     }))
 
     def clean_video_file(self):

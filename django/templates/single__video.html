@@ -1,0 +1,63 @@
+{% extends 'videos_base.html' %}
+{% load static %}
+{% block content %}
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="embed-responsive embed-responsive-16by9">
+        <video
+          id="video"
+          class="embed-responsive-item"
+          controls
+          data-video-id="{{video.id}}"
+          data-video-url="{{phrase_url}}"
+        >
+          <source src="{{video.track.url}}" type="video/mp4" />
+
+          {% for subtitle in subtitles %}
+          <track
+            src="{% url 'subtitles' subtitle.id %}"
+            kind="subtitles"
+            srclang="{{subtitle.language}}"
+            label="{{subtitle.language}}"
+          />
+          {% endfor %} Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <!-- Phrase Section -->
+      <div class="comment-section mb-4">
+        <h5>Phrases</h5>
+        <form id="form">
+        
+          <div class="mb-3">
+            <input
+              type="text"
+              id="searchBox"
+            
+              class="form-control"
+              placeholder="Search Phrase..."
+              aria-label="Search Phrase"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+
+      <!-- Comment List (Dynamic Comments Placeholder) -->
+      <div id="timelineList">
+        <!-- Render comments dynamically here -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Bootstrap CSS (if not already included) -->
+
+{% endblock content %} 
+{% block extra_js %} 
+
+  <script src={% static 'js/phrase-timeline.js' %} > </script>
+
+{% endblock %}

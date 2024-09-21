@@ -1,6 +1,7 @@
 from typing import Any
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -28,12 +29,22 @@ class Subtitle(BaseModel):
     
     video_track     = models.ForeignKey(Video,on_delete=models.CASCADE)
     language        = models.CharField()
-    track_path      = models.CharField()  
+    subtitle_text   = models.TextField()  
+    
+    
+
+
+# class TimeLine(BaseModel):
+    
+    
+#     video_track    = models.ForeignKey(Video,related_name='timeline',on_delete=models.CASCADE)
+#     occurence      = models.PositiveIntegerField()
+#     phrase         = models.CharField()
+#     timestamp      = models.FloatField()
     
     
     
-        
-    
+     
      
         
     
