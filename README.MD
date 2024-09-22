@@ -3,11 +3,8 @@
 ## Video Overview
 
 
+https://github.com/user-attachments/assets/fe85d54f-3b10-4c8c-8792-af09bfd53c03
 
-
-<video width="50%" controls>
-  <source src="https://drive.google.com/file/d/1DKHi-xA4eH0Rxv605xGIRRT1fvgET7cJ/preview" type="video/mp4">
-</video>
 
 
 ### Django Environment Variables create the .env inside django project directory add this variable
