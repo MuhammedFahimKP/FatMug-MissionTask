@@ -2,9 +2,7 @@
 
 ## Video Overview
 
-[![Watch the video]
-https://drive.google.com/file/d/1DKHi-xA4eH0Rxv605xGIRRT1fvgET7cJ/preview
-https://drive.google.com/file/d/1DKHi-xA4eH0Rxv605xGIRRT1fvgET7cJ/preview
+[<iframe src="https://drive.google.com/file/d/1DKHi-xA4eH0Rxv605xGIRRT1fvgET7cJ/preview" width="640" height="480" allow="autoplay"></iframe>]
 
 
 
