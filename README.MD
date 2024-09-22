@@ -3,7 +3,9 @@
 ## Video Overview
 
 
-<video width="320" height="240" controls>
+
+
+<video width="50%" controls>
   <source src="https://drive.google.com/file/d/1DKHi-xA4eH0Rxv605xGIRRT1fvgET7cJ/preview" type="video/mp4">
 </video>
 
