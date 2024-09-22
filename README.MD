@@ -1,11 +1,7 @@
 
 
 ## Video Overview
-
-[<iframe src="https://drive.google.com/file/d/1DKHi-xA4eH0Rxv605xGIRRT1fvgET7cJ/preview" width="640" height="480" allow="autoplay"></iframe>]
-
-
-
+[<img src="https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg" width="50%">]
 
 
 ### Django Environment Variables create the .env inside django project directory add this variable
