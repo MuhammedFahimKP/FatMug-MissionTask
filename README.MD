@@ -1,7 +1,7 @@
 
 
 ## Video Overview
-[<img src="https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg" width="50%">]
+<img src="https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg" width="50%">
 
 
 ### Django Environment Variables create the .env inside django project directory add this variable
