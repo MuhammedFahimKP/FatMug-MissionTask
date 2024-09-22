@@ -1,6 +1,7 @@
 ## Video Overview
 
-[Watch the video here](https://www.loom.com/share/7a08237a6b3a46d1860a731f1e526220?sid=047cd50b-e229-41c7-8500-e68762be8e7b)
+
+https://drive.usercontent.google.com/download?id=1DKHi-xA4eH0Rxv605xGIRRT1fvgET7cJ&export=view&authuser=0
 
 ### Django Environment Variables create the .env inside django project directory add this variable
 
